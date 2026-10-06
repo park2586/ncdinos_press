@@ -101,12 +101,6 @@ if st.session_state["mode"] == "mail":
             help="카테고리를 미리 지정하면 더 정확한 초안이 생성됩니다."
         )
 
-        st.markdown(
-            '<div style="font-size:0.8rem;color:#c00000;margin-top:4px">'
-            '🚨 위기관리 내용은 사이드바 → Crisis Management 페이지를 이용하세요</div>',
-            unsafe_allow_html=True
-        )
-
         generate_btn = st.button(
             "✨ 보도자료 초안 바로 생성",
             type="primary",
