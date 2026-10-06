@@ -142,7 +142,22 @@ if st.session_state["mode"] == "mail":
 ## 작성 지침
 {common_inst}{cat_instruction}
 
-위 내용을 바탕으로 완성된 NC 다이노스 공식 보도자료를 작성하세요.
+## 구조 및 문체 규칙
+1. **구조**: 제목 → 부제목(선택) → 본문 → 인용문 → 마무리 순서로 작성하세요.
+   - 본문은 행사 개요 → 주요 행사 내용(시간 순서) → 의미/효과 순으로 전개하세요.
+   - 각 문단은 하나의 핵심 내용만 담고, 2~4문장으로 구성하세요.
+
+2. **인용문 처리**:
+   - 인용문은 본문 내용을 단순 반복하지 말고, 의미·감사·기대·포부 등 감성적 메시지를 담으세요.
+   - 같은 인물의 인용문이 2개 이상일 경우 내용이 겹치지 않도록 각각 다른 메시지를 전달하세요.
+   - 형식: 이름 직책은 "○○○ NC 다이노스 ○○"으로 표기하세요.
+
+3. **문체**:
+   - 첫 문장은 행사명과 핵심 내용을 간결하게 소개하세요 (80자 이내).
+   - 수동태보다 능동태를 사용하세요.
+   - 단조로운 나열식 문장(~했다. ~했다. ~했다.) 대신 문장 구조를 다양하게 변화시키세요.
+   - 숫자와 구체적 사실(인원, 금액, 날짜 등)을 적극 활용해 생동감을 더하세요.
+
 확인이 필요한 정보는 [확인 필요: ○○]로 표시하세요.
 보도자료만 출력하고 다른 설명은 하지 마세요."""
 
@@ -207,6 +222,13 @@ else:
 
         category = st.radio("카테고리 선택", options=non_crisis_categories,
                             index=auto_cat_idx, horizontal=True)
+        st.markdown(
+            '<div style="font-size:0.8rem;color:#c00000;margin-top:-8px;margin-bottom:8px">'
+            '🚨 위기관리는 사이드바 → Crisis Management 페이지를 이용하세요</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown("---")
+
         cat_info = all_category_fields.get(category, {})
         fields = cat_info.get("fields", [])
         sub_categories = cat_info.get("sub_categories", [])
@@ -310,4 +332,5 @@ st.divider()
 st.markdown("""<div style="font-size:0.8rem;color:#888;text-align:center;">
 ⚠️ AI 생성 초안은 반드시 검토 후 사용 &nbsp;|&nbsp;
 [확인 필요: ○○] 항목은 실제 정보로 교체 &nbsp;|&nbsp;
+🚨 위기관리는 사이드바 Crisis Management 페이지 이용
 </div>""", unsafe_allow_html=True)
