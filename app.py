@@ -213,13 +213,6 @@ else:
 
         category = st.radio("카테고리 선택", options=non_crisis_categories,
                             index=auto_cat_idx, horizontal=True)
-        st.markdown(
-            '<div style="font-size:0.8rem;color:#c00000;margin-top:-8px;margin-bottom:8px">'
-            '🚨 위기관리는 사이드바 → Crisis Management 페이지를 이용하세요</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown("---")
-
         cat_info = all_category_fields.get(category, {})
         fields = cat_info.get("fields", [])
         sub_categories = cat_info.get("sub_categories", [])
@@ -323,5 +316,4 @@ st.divider()
 st.markdown("""<div style="font-size:0.8rem;color:#888;text-align:center;">
 ⚠️ AI 생성 초안은 반드시 검토 후 사용 &nbsp;|&nbsp;
 [확인 필요: ○○] 항목은 실제 정보로 교체 &nbsp;|&nbsp;
-🚨 위기관리는 사이드바 Crisis Management 페이지 이용
 </div>""", unsafe_allow_html=True)
