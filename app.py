@@ -121,12 +121,12 @@ if st.session_state["mode"] == "mail":
 
                     # 참고 보도자료 검색
                     from vector_store import search
-                    refs = search(mail_text[:200], top_k=3)
+                    refs = search(mail_text[:500], top_k=5)
                     st.session_state["references"] = refs
 
                     ref_text = ""
                     for i, r in enumerate(refs, 1):
-                        ref_text += f"\n\n[참고 보도자료 {i}: {r['title']}]\n{r['text'][:600]}"
+                        ref_text += f"\n\n[참고 보도자료 {i}: {r['title']}]\n{r['text'][:1200]}"
 
                     common_inst = cfg.get("prompt_instructions", {}).get("공통", "")
 
